@@ -1,194 +1,121 @@
-# Atharv SecureTech Website
+# TSSec – Full Stack Security Web Application
 
-A full-stack web application developed using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)** to showcase the services, research expertise, and leadership of **Atharv SecureTech**, a cybersecurity-focused organization.
-
-The project includes a modern responsive frontend and a backend API that allows users to send inquiries through a contact form. The backend processes requests and sends email notifications using **Nodemailer**.
+TSSec is a full-stack web application with a cybersecurity-themed interface, built to demonstrate frontend–backend integration, user interaction, and data handling using the MERN stack.
 
 ---
 
-## **Features**
+## 🚀 Features
 
-### **Frontend**
-- Responsive website built with **React**
-- Styled using **Tailwind CSS**
-- Single-page application design
-- Sections for:
-  - About the organization
-  - Services
-  - Research & Expertise
-  - Founders (LinkedIn integration)
-  - Core Values
-  - Contact Form
-- Interactive UI with hover effects and modern layout
-
-### **Backend**
-- Built using **Node.js and Express**
-- API endpoint to process contact form submissions
-- Email sending functionality using **Nodemailer**
-- Environment variable configuration using **dotenv**
+* Interactive system-style UI with animations and smooth navigation
+* Contact form with backend API integration
+* Email notifications using Nodemailer
+* MongoDB database for storing user messages
+* Admin dashboard to view and analyze user queries
 
 ---
 
-## **Tech Stack**
+## 🛠 Tech Stack
 
-### **Frontend**
-- React.js  
-- Tailwind CSS  
-- JavaScript (ES6)  
-- Vite  
-
-### **Backend**
-- Node.js  
-- Express.js  
-- Nodemailer  
-- dotenv  
-- CORS  
+* **Frontend:** React, Tailwind CSS
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB
+* **Other:** Nodemailer
 
 ---
 
-## **Project Structure**
+## 📁 Project Structure
 
 ```
-AtharvSecureTech
+TSSec/
 │
-├── client                 # React Frontend
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   └── App.jsx
-│   └── package.json
-│
-├── server                 # Node Backend
-│   ├── controllers
-│   ├── routes
-│   ├── config
-│   ├── server.js
-│   ├── .env.example
-│   └── package.json
-│
-├── README.md
-└── .gitignore
+├── client/        # React frontend
+├── server/        # Node.js backend
+└── README.md
 ```
 
 ---
 
-## **Environment Variables**
+## ⚙️ Setup Instructions
 
-This project uses environment variables for email configuration.
-
-Create a `.env` file inside the **server** directory.
-
-Example:
+### 1. Clone the repository
 
 ```
-PORT=5000
-
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_google_app_password
-```
-
-You can use `.env.example` as a reference.
-
-⚠️ **Never commit your `.env` file to GitHub.**
-
----
-
-## **Installation & Setup**
-
-### **1. Clone the repository**
-
-```
-git clone https://github.com/yourusername/atharv-securetech.git
-```
-
-```
-cd atharv-securetech
+git clone https://github.com/SathwikGit/TSSec.git
+cd TSSec
 ```
 
 ---
 
-### **2. Install frontend dependencies**
-
-```
-cd client
-npm install
-```
-
-Run frontend:
-
-```
-npm run dev
-```
-
-Frontend runs on:
-
-```
-http://localhost:5173
-```
-
----
-
-### **3. Install backend dependencies**
-
-Open a new terminal:
+### 2. Setup Backend
 
 ```
 cd server
 npm install
 ```
 
+Create a `.env` file:
+
+```
+PORT=5000
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/dbname
+```
+
 Run backend:
 
 ```
-node server.js
-```
-
-Backend runs on:
-
-```
-http://localhost:5000
+npm start
 ```
 
 ---
 
-## **Contact Form Workflow**
+### 3. Setup Frontend
 
 ```
-User fills contact form
-        ↓
-React sends POST request
-        ↓
-Express backend API receives request
-        ↓
-Nodemailer sends email via SMTP
-        ↓
-Message arrives in organization inbox
+cd client
+npm install
+npm run dev
 ```
 
 ---
 
-## **Future Improvements**
+## 🔐 Environment Variables
 
-Planned enhancements include:
-
-- MongoDB integration for storing contact messages
-- Admin dashboard to view user inquiries
-- Spam protection using CAPTCHA
-- Rate limiting for API security
-- Cloud deployment
-- Integration with scalable email services (SendGrid / AWS SES)
+| Variable   | Description               |
+| ---------- | ------------------------- |
+| PORT       | Server port               |
+| EMAIL_USER | Sender email              |
+| EMAIL_PASS | Email app password        |
+| MONGO_URL  | MongoDB connection string |
 
 ---
 
-## **Security Note**
+## 📌 Current Status
 
-Sensitive information such as email credentials is stored using **environment variables** and is not included in the repository.
+* Frontend fully implemented with custom UI
+* Backend supports email + database integration
+* Admin dashboard functional
+* Running in development environment
 
 ---
 
-## **Author**
+## 🔮 Future Improvements
+
+* Secure admin authentication
+* Real-time dashboard updates
+* Spam protection for contact form
+* Deployment to cloud (AWS / Vercel / Render)
+
+---
+
+## 👤 Author
 
 **T. Sai Sathwik**
+BITS Pilani Hyderabad
 
-BITS Pilani – Hyderabad Campus  
-MERN Stack Developer | Competitive Programmer
+---
+
+## 📄 License
+
+This project is for educational purposes.
