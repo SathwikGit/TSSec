@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://my-frontend.vercel.app",
+    origin: "https://ts-sec-gtv1.vercel.app",
   }),
 );
 app.use(express.json());
