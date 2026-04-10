@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API from "../api/config";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -19,30 +20,14 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setStatus("transmitting request...");
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
+      const { data } = await API.post("/contact", formData);
 
       if (data.success) {
         setStatus("connection established ✔");
-
-        // reset form
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
         setStatus("transmission failed ✖");
       }
@@ -55,16 +40,13 @@ function Contact() {
   return (
     <section id="contact" className="px-6">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-        {/* LEFT SIDE */}
         <div className="space-y-6">
           <h2 className="text-3xl text-green-400">Initiate Connection</h2>
-
           <div className="border border-gray-800 p-5 rounded-lg font-mono text-sm text-green-400">
             &gt; endpoint: secure_channel <br />
             &gt; protocol: encrypted <br />
             &gt; status: ready
           </div>
-
           <div className="text-gray-400 text-sm space-y-2">
             <p>
               <span className="text-green-400">email:</span>{" "}
@@ -79,10 +61,8 @@ function Contact() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="border border-gray-800 p-6 rounded-xl">
           <p className="text-green-400 font-mono mb-4">&gt; transmit_message</p>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
@@ -93,7 +73,6 @@ function Contact() {
               required
               className="w-full p-3 bg-black border border-gray-700 focus:border-green-400 outline-none"
             />
-
             <input
               type="email"
               name="email"
@@ -103,7 +82,6 @@ function Contact() {
               required
               className="w-full p-3 bg-black border border-gray-700 focus:border-green-400 outline-none"
             />
-
             <input
               type="text"
               name="subject"
@@ -112,7 +90,6 @@ function Contact() {
               placeholder="subject"
               className="w-full p-3 bg-black border border-gray-700 focus:border-green-400 outline-none"
             />
-
             <textarea
               name="message"
               value={formData.message}
@@ -122,7 +99,6 @@ function Contact() {
               required
               className="w-full p-3 bg-black border border-gray-700 focus:border-green-400 outline-none"
             />
-
             <button
               type="submit"
               className="bg-green-500 px-6 py-3 rounded-lg text-black w-full"
@@ -130,7 +106,6 @@ function Contact() {
               execute
             </button>
           </form>
-
           {status && (
             <p className="mt-4 text-sm text-gray-400 font-mono">
               &gt; {status}
