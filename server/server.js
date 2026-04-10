@@ -11,7 +11,22 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://ts-sec-gtv1.vercel.app",
+    origin: function (origin, callback) {
+      const allowed = [
+        "https://ts-sec-gtv1.vercel.app", // your main frontend
+      ];
+
+      // allow all vercel preview URLs for your project
+      if (
+        !origin ||
+        allowed.includes(origin) ||
+        /https:\/\/ts-sec-gtv1.*\.vercel\.app/.test(origin)
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
   }),
 );
 app.use(express.json());
